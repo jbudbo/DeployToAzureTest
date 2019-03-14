@@ -82,8 +82,7 @@
             "displayName": "appSettings"
           },
           "properties": {
-            "key1": "value1",
-            "key2": "value2"
+            "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/jbudbo/DeployToAzureTest/blob/master/package.zip?raw=true"
           }
         }
       ]
