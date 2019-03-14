@@ -154,40 +154,6 @@
       }
     },
     {
-      "name": "[concat('CPUHigh ', parameters('appHostingName'))]",
-      "type": "Microsoft.Insights/alertrules",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2014-04-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('appHostingName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Web/serverfarms', parameters('appHostingName')))]": "Resource",
-        "displayName": "CPUHigh appSights"
-      },
-      "properties": {
-        "name": "[concat('CPUHigh ', parameters('appHostingName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', parameters('appHostingName'))]",
-        "isEnabled": false,
-        "condition": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('appHostingName'))]",
-            "metricName": "CpuPercentage"
-          },
-          "operator": "GreaterThan",
-          "threshold": 90,
-          "windowSize": "PT15M"
-        },
-        "action": {
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-          "sendToServiceOwners": true,
-          "customEmails": [ ]
-        }
-      }
-    },
-    {
       "name": "[concat('ServerErrors ', 'appSights')]",
       "type": "Microsoft.Insights/alertrules",
       "location": "[resourceGroup().location]",
